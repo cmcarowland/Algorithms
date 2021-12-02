@@ -1,9 +1,29 @@
 #include <iostream>
 using namespace std;
 
-int ThreeXPlusOne(int num)
+void AddLastThree(int num, int lastThree[])
+{
+  lastThree[2] = lastThree[1];
+  lastThree[1] = lastThree[0];
+  lastThree[0] = num;
+}
+
+bool CheckLastThree(int lastThree[])
+{
+  for(int i = 0; i < 3; i++)
+  {
+    //cout << lastThree[i] << endl;
+    if(lastThree[i] != 1 && lastThree[i] != 2 && lastThree[i] != 4)
+      return false;
+  }
+  
+  return true;
+}
+
+int ThreeXPlusOne(long num)
 {
   int count = 0;
+  int lastthree[3] = {0};
   while(num != 1)
   {
     count++;
@@ -13,15 +33,23 @@ int ThreeXPlusOne(int num)
     {
       num = 3 * num + 1;
     }
-    cout << "Count " << count << " : " << num << endl;
+    AddLastThree(num, lastthree);
   }
-  
-  return count;
+  //cout << "Last three : " << lastthree[0] << " " << lastthree[1] << " " << lastthree[2] << endl;
+  if(CheckLastThree(lastthree))
+    return count;
+  else
+    return 0;
 }
 
 int main() 
 {
-    int x = ThreeXPlusOne(10101101);
-    printf("%d\n", x);
+    for(int i = 800000; i < 1000000; i++)
+    {
+      int x = ThreeXPlusOne(i);
+      if(x == 0)
+        printf("%d is Not Valid\n", i);
+    }
+    
     return 0;
 }
