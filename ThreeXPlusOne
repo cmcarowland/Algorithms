@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+int ThreeXPlusOne(int num)
+{
+  int count = 0;
+  while(num != 1)
+  {
+    count++;
+    if(num % 2 == 0)
+      num /= 2;
+    else
+    {
+      num = 3 * num + 1;
+    }
+    cout << "Count " << count << " : " << num << endl;
+  }
+  
+  return count;
+}
+
+int main() 
+{
+    int x = ThreeXPlusOne(10101101);
+    printf("%d\n", x);
+    return 0;
+}
