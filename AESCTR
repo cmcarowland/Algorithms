@@ -1,0 +1,19 @@
+#From Steven challenge hack an encrypted message
+import binascii
+
+encflag=b'$a\x02[G\xfb\x84\xcc=\xb7\x92\r\x86\xe3Z\xd7\x04|\x16FR\xb5\xa6\x85\x18\x9c\xc1Y\xcb\xb7z\xd4'
+
+ens = b"Command IN -> Encrypt Filesystem"
+dcs = b"Command IN -> Decrypt Filesystem"
+encflag = bytearray(encflag)
+
+print(encflag[14:16])
+
+for i in range(len(encflag)):
+  x = (encflag[i] ^ ens[i])
+  encflag[i] = (dcs[i] ^ x)
+
+print(encflag[14:16])
+#print(encflag)
+print(binascii.b2a_base64(encflag))
+print(b"JGECW0f7hMw9t5INhuNa1wR8FkZStaaFGJzBWcu3etQ=")
