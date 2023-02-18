@@ -1,3 +1,5 @@
+# Apple Sequences
+
 There is a string of size n containing only 'A' and 'O'. 'A' stands for Apple, and 'O' stands for Orange. We have m number of spells, each spell allows us to convert an orange into an apple.
 
 Find the longest sequence of apples you can make, given a string and the value of m.
